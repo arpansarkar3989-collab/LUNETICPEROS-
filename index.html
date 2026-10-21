@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="hi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUNETICPEROS - Economical Eco Learning Kit</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- GSAP & ScrollTrigger for Smooth Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            background-color: #0b0f19;
+            color: #f3f4f6;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        .star-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 10px 30px -10px rgba(56, 189, 248, 0.2);
+        }
+        .btn-primary {
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(6, 182, 212, 0.4);
+        }
+
+        /* Professional Scrolling Marquee Animation */
+        @keyframes scrollTicker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-ticker {
+            display: flex;
+            width: max-content;
+            animation: scrollTicker 25s linear infinite;
+        }
+        .animate-ticker:hover {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body class="relative overflow-x-hidden selection:bg-cyan-500 selection:text-slate-900">
+
+    <!-- Background Starry SVG for GSAP Animations -->
+    <svg id="stars" class="star-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice">
+        <defs>
+            <radialGradient id="grad9" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.8" />
+                <stop offset="100%" stop-color="#0b0f19" stop-opacity="0" />
+            </radialGradient>
+        </defs>
+        <g fill="#ffffff">
+            <path class="star" d="M 100 100 L 102 105 L 107 105 L 103 108 L 105 113 L 100 110 L 95 113 L 97 108 L 93 105 L 98 105 Z" opacity="0.3" />
+            <path class="star" d="M 300 200 L 302 205 L 307 205 L 303 208 L 305 213 L 300 210 L 295 213 L 297 208 L 293 205 L 298 205 Z" opacity="0.3" />
+            <path class="star" d="M 700 150 L 702 155 L 707 155 L 703 158 L 705 163 L 700 160 L 695 163 L 697 158 L 693 155 L 698 155 Z" opacity="0.3" />
+            <path class="star" d="M 850 350 L 852 355 L 857 355 L 853 358 L 855 363 L 850 360 L 845 363 L 847 358 L 843 355 L 848 355 Z" opacity="0.3" />
+            <path class="star" d="M 200 600 L 202 605 L 207 605 L 203 608 L 205 613 L 200 610 L 195 613 L 197 608 L 193 605 L 198 605 Z" opacity="0.4" fill="url(#grad9)" />
+        </g>
+    </svg>
+
+    <!-- Navigation Header with Brand Logo -->
+    <nav class="relative z-50 flex items-center justify-between px-6 py-4 border-b border-gray-800/80 bg-slate-900/80 backdrop-blur-md sticky top-0">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg overflow-hidden flex items-center justify-center bg-slate-800 border border-cyan-500/30 shadow-lg shadow-cyan-500/20">
+                <!-- Brand Logo Image -->
+                <img src="https://lh3.googleusercontent.com/d/1vJ3IoI-BJpSWjUtuWdMG0BZAFYgeQcD8=s220" alt="LUNETICPEROS Logo" class="w-full h-full object-cover">
+            </div>
+            <span class="text-xl font-bold tracking-wider text-white">LUNETICPEROS</span>
+        </div>
+
+        <div class="hidden md:flex items-center gap-8 text-gray-300 font-medium text-sm">
+            <a href="#about" class="hover:text-cyan-400 transition-colors">About Us</a>
+            <a href="#activities" class="hover:text-cyan-400 transition-colors">Kit Activities</a>
+            <a href="#guide" class="hover:text-cyan-400 transition-colors">Guide & QR</a>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <a href="https://wa.me/918471042746?text=I%20am%20interested%20in%20your%20product!" target="_blank" class="px-5 py-2 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-sm flex items-center gap-2 shadow-lg shadow-emerald-500/20 transition-all hover:scale-105">
+                <i class="fa-brands fa-whatsapp text-lg"></i> Buy on WhatsApp
+            </a>
+
+            <!-- Mobile Menu Trigger Button -->
+            <button id="menu-btn" class="md:hidden text-gray-300 focus:outline-none p-2">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Drawer Navigation -->
+    <div id="mobile-menu" class="hidden fixed inset-x-0 top-[73px] bg-slate-900/95 border-b border-gray-800 p-6 flex-col gap-4 z-40 md:hidden backdrop-blur-xl">
+        <a href="#about" class="mobile-link text-gray-200 font-medium py-2 border-b border-gray-800">About Us</a>
+        <a href="#activities" class="mobile-link text-gray-200 font-medium py-2 border-b border-gray-800">Kit Activities</a>
+        <a href="#guide" class="mobile-link text-gray-200 font-medium py-2">Guide & QR</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative z-10 flex flex-col items-center justify-center text-center px-4 py-20 md:py-28 min-h-[80vh]">
+        <span class="hero-anim px-4 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 text-xs md:text-sm font-semibold border border-cyan-500/30 mb-6 tracking-wide">
+            SEVA Initiative Project
+        </span>
+        <h1 class="hero-anim text-4xl md:text-6xl font-extrabold text-white max-w-4xl leading-tight tracking-tight">
+            Economical Eco Learning Kit
+        </h1>
+        <p class="hero-anim text-base md:text-xl text-gray-400 max-w-2xl mt-4 leading-relaxed">
+            Hands-On STEM & Eco-Activity Kit designed for young learners. Explore Electricity, Chemistry, Optics, and Environmental Science with safe, practical experiments.
+        </p>
+        <div class="hero-anim mt-8 flex flex-wrap justify-center gap-4">
+            <a href="https://wa.me/918471042746?text=I%20am%20interested%20in%20your%20product!" target="_blank" class="btn-primary px-8 py-3.5 rounded-xl bg-cyan-500 text-slate-950 font-bold text-base shadow-xl shadow-cyan-500/20">
+                Order Now
+            </a>
+            <a href="#activities" class="px-8 py-3.5 rounded-xl glass-card text-white font-semibold text-base hover:bg-white/10 transition">
+                Explore 8 Activities
+            </a>
+        </div>
+    </section>
+
+    <!-- Professional Scrolling Ticker / Marquee Banner -->
+    <div class="relative z-10 overflow-hidden bg-cyan-500/10 border-y border-cyan-500/20 py-3.5">
+        <div class="animate-ticker flex whitespace-nowrap items-center text-cyan-300 font-semibold text-sm tracking-wider">
+            <span class="mx-6 flex items-center gap-2"><i class="fa-solid fa-bolt text-amber-400"></i> 100% Safe Low-Voltage Kits</span>
+            <span class="mx-6 text-cyan-500">•</span>
+            <span class="mx-6 flex items-center gap-2"><i class="fa-solid fa-graduation-cap text-cyan-400"></i> 8 Practical STEM Activities</span>
+            <span class="mx-6 text-cyan-500">•</span>
+            <span class="mx-6 flex items-center gap-2"><i class="fa-solid fa-book-open text-emerald-400"></i> Instant QR & Drive Guidebooks</span>
+            <span class="mx-6 text-cyan-500">•</span>
+            <span class="mx-6 flex items-center gap-2"><i class="fa-solid fa-seedling text-emerald-400"></i> Eco-Friendly SEVA Initiative</span>
+            <span class="mx-6 text-cyan-500">•</span>
+            <!-- Duplicate for seamless infinite loop -->
+            <span class="mx-6 flex items-center gap-2"><i class="fa-solid fa-bolt text-amber-400"></i> 100% Safe Low-Voltage Kits</span>
+            <span class="mx-6 text-cyan-500">•</span>
+            <span class="mx-6 flex items-center gap-2"><i class="fa-solid fa-graduation-cap text-cyan-400"></i> 8 Practical STEM Activities</span>
+            <span class="mx-6 text-cyan-500">•</span>
+            <span class="mx-6 flex items-center gap-2"><i class="fa-solid fa-book-open text-emerald-400"></i> Instant QR & Drive Guidebooks</span>
+            <span class="mx-6 text-cyan-500">•</span>
+            <span class="mx-6 flex items-center gap-2"><i class="fa-solid fa-seedling text-emerald-400"></i> Eco-Friendly SEVA Initiative</span>
+            <span class="mx-6 text-cyan-500">•</span>
+        </div>
+    </div>
+
+    <!-- About Us Section -->
+    <section id="about" class="relative z-10 px-6 py-20 max-w-6xl mx-auto border-t border-gray-800/60">
+        <div class="text-center mb-12 scroll-reveal">
+            <h2 class="text-3xl font-bold text-white">About Our Startup & Kit</h2>
+            <p class="text-gray-400 mt-2 text-sm md:text-base">Bridging practical learning gaps with affordable and tool-free STEM kits.</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="glass-card p-6 rounded-2xl hover:-translate-y-1.5 scroll-reveal">
+                <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-2xl mb-4">
+                    <i class="fa-solid fa-indian-rupee-sign"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2">Affordable & Value</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">High-cost STEM kits can be prohibitive. Our kit brings 8 interactive experiments at an accessible price point.</p>
+            </div>
+            <div class="glass-card p-6 rounded-2xl hover:-translate-y-1.5 scroll-reveal">
+                <div class="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl mb-4">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2">100% Safe Design</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Uses safe low-voltage batteries (3-9V), no hot glue guns required, and pre-assembled components for safe handling.</p>
+            </div>
+            <div class="glass-card p-6 rounded-2xl hover:-translate-y-1.5 scroll-reveal">
+                <div class="w-12 h-12 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-2xl mb-4">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2">Multi-Disciplinary</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Covers 4 key domain areas: Electricity & Circuits, Chemistry, Optics, and Environmental Eco-Learning.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Kit Details (8 Activities with Direct Drive Guide Links) -->
+    <section id="activities" class="relative z-10 px-6 py-20 max-w-6xl mx-auto border-t border-gray-800/60">
+        <div class="text-center mb-14 scroll-reveal">
+            <h2 class="text-3xl font-bold text-white">What's Inside The Kit?</h2>
+            <p class="text-gray-400 mt-2 text-sm md:text-base">Click any activity card below to open its specific Guide Book instantly!</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <!-- Activity 1: Motor Fan Kit -->
+            <a href="https://drive.google.com/file/d/1-82KQz_W1ZNti4V91jaOOsalozt0S6CO/view?usp=drivesdk" target="_blank" class="glass-card p-5 rounded-xl border-l-4 border-cyan-500 hover:-translate-y-1.5 scroll-reveal flex flex-col justify-between group cursor-pointer">
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[11px] text-cyan-400 font-bold uppercase tracking-wider">Electricity</span>
+                        <i class="fa-solid fa-fan text-cyan-400 text-lg group-hover:rotate-180 transition-transform duration-500"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mt-1">Normal Motor Fan</h4>
+                    <p class="text-xs text-gray-400 mt-2 leading-relaxed">Light + Fan Circuit to show basic electrical flow and polarity.</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-gray-800 flex items-center justify-between text-xs font-semibold text-cyan-400">
+                    <span>View Guidebook</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </div>
+            </a>
+
+            <!-- Activity 2: Litmus Paper Test -->
+            <a href="https://drive.google.com/file/d/1uNmw7P-tJdK8yqyqOpkoymdPBEsQebR8/view?usp=drivesdk" target="_blank" class="glass-card p-5 rounded-xl border-l-4 border-purple-500 hover:-translate-y-1.5 scroll-reveal flex flex-col justify-between group cursor-pointer">
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[11px] text-purple-400 font-bold uppercase tracking-wider">Chemistry</span>
+                        <i class="fa-solid fa-flask text-purple-400 text-lg group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mt-1">Litmus Paper Test</h4>
+                    <p class="text-xs text-gray-400 mt-2 leading-relaxed">Safe acid-base identification using red and blue litmus strips.</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-gray-800 flex items-center justify-between text-xs font-semibold text-purple-400">
+                    <span>View Guidebook</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </div>
+            </a>
+
+            <!-- Activity 3: Magic Colouring Kit -->
+            <a href="https://drive.google.com/file/d/1x5S6WZ38Q1SRTCYQrta0N3xsd6tosV4m/view?usp=drivesdk" target="_blank" class="glass-card p-5 rounded-xl border-l-4 border-purple-500 hover:-translate-y-1.5 scroll-reveal flex flex-col justify-between group cursor-pointer">
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[11px] text-purple-400 font-bold uppercase tracking-wider">Chemistry</span>
+                        <i class="fa-solid fa-wand-magic-sparkles text-purple-400 text-lg group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mt-1">Magic Colouring</h4>
+                    <p class="text-xs text-gray-400 mt-2 leading-relaxed">Invisible Ink experiment using natural pH turmeric indicators.</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-gray-800 flex items-center justify-between text-xs font-semibold text-purple-400">
+                    <span>View Guidebook</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </div>
+            </a>
+
+            <!-- Activity 4: Laser Reflection Kit -->
+            <a href="https://drive.google.com/file/d/1ABMmIUUQqKvJeY1dI_SVcdeRHXw8P9ZK/view?usp=drivesdk" target="_blank" class="glass-card p-5 rounded-xl border-l-4 border-rose-500 hover:-translate-y-1.5 scroll-reveal flex flex-col justify-between group cursor-pointer">
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[11px] text-rose-400 font-bold uppercase tracking-wider">Optics</span>
+                        <i class="fa-solid fa-bolt text-rose-400 text-lg group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mt-1">Laser Reflection Kit</h4>
+                    <p class="text-xs text-gray-400 mt-2 leading-relaxed">Rotating gear motor with plane mirrors showing light patterns.</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-gray-800 flex items-center justify-between text-xs font-semibold text-rose-400">
+                    <span>View Guidebook</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </div>
+            </a>
+
+            <!-- Activity 5: Seed Mounted Pencil -->
+            <a href="https://drive.google.com/file/d/1Mdo6_r802w6BGMQBmXIE5mjBbdO09G6X/view?usp=drivesdk" target="_blank" class="glass-card p-5 rounded-xl border-l-4 border-emerald-500 hover:-translate-y-1.5 scroll-reveal flex flex-col justify-between group cursor-pointer">
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[11px] text-emerald-400 font-bold uppercase tracking-wider">Eco Activity</span>
+                        <i class="fa-solid fa-seedling text-emerald-400 text-lg group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mt-1">Seed Mounted Pencil</h4>
+                    <p class="text-xs text-gray-400 mt-2 leading-relaxed">Teaches recycling and planting by growing plants from seed pencils.</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-gray-800 flex items-center justify-between text-xs font-semibold text-emerald-400">
+                    <span>View Guidebook</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </div>
+            </a>
+
+            <!-- Activity 6: Kaleidoscope -->
+            <a href="https://drive.google.com/file/d/1B6vtFp4mGtnJ5zan8Gi8NEqDON0ZP6DL/view?usp=drivesdk" target="_blank" class="glass-card p-5 rounded-xl border-l-4 border-rose-500 hover:-translate-y-1.5 scroll-reveal flex flex-col justify-between group cursor-pointer">
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[11px] text-rose-400 font-bold uppercase tracking-wider">Optics</span>
+                        <i class="fa-solid fa-eye text-rose-400 text-lg group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mt-1">Kaleidoscope</h4>
+                    <p class="text-xs text-gray-400 mt-2 leading-relaxed">Triangular mirror setup demonstrating symmetry and multi-reflection.</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-gray-800 flex items-center justify-between text-xs font-semibold text-rose-400">
+                    <span>View Guidebook</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </div>
+            </a>
+
+            <!-- Activity 7: Water Pump Set -->
+            <a href="https://drive.google.com/file/d/1gVEThO0BV13KbKEVl3YnjscvR53dQeaS/view?usp=drivesdk" target="_blank" class="glass-card p-5 rounded-xl border-l-4 border-cyan-500 hover:-translate-y-1.5 scroll-reveal flex flex-col justify-between group cursor-pointer">
+         
